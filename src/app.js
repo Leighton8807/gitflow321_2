@@ -5,8 +5,10 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const myconnection = require('express-myconnection');
 
-const register = require('./routes/register');
+
+const register = require('./routes/login');
 const login = require('./routes/login');
+const deleteCompany = require('./routes/delete-product')
 
 const app = express()
     .use(bodyParser.json())
@@ -35,6 +37,7 @@ app.set('view engine', 'hbs');
 
 app.use('/register', register);
 app.use('/', login)
+app.use('/delete', deleteCompany);
 
 
 

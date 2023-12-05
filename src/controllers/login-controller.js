@@ -43,7 +43,7 @@ function register(req, res){
 
     if (req.session.loggedin != true) {
         
-        res.render('login/register');
+        res.render('register/register');
     }else{
         res.redirect('/')
     }
@@ -55,7 +55,7 @@ function storeUser(req, res){
     req.getConnection((err, conn)=>{
         conn.query('SELECT * FROM users WHERE email = ?',[data.email], (err, userdata)=>{
             if (userdata.length > 0) {
-                res.render('login/register', {error: 'Error: Usuario ya existe !'});
+                res.render('register/register', {error: 'Error: Usuario ya existe !'});
             }else{
                 bcrypt.hash(data.password, 12).then(hash => {
                     data.password = hash;
@@ -74,6 +74,8 @@ function storeUser(req, res){
         });
     });
 }
+
+//function delete()
 
 function logout(req, res) {
     if(req.session.loggedin == true){

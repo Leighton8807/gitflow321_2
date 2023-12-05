@@ -19,6 +19,7 @@
     "express-myconnection": "^1.0.4",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
+    "njwt": "^2.0.0",
     "nodemon": "^3.0.2"
   }
 }
