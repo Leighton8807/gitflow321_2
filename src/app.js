@@ -33,8 +33,8 @@ app.engine('.hbs', engine({
 app.set('view engine', 'hbs');
 
 
-//app.use('/register', register);
-app.use('/login', login)
+app.use('/register', register);
+app.use('/', login)
 
 
 
@@ -43,7 +43,6 @@ app.listen(port, ()=>{
     console.log(`Express server listening on port ${port} `);
 });
 
-app.use('/', login);
 
 app.get('/', (req, res) => {
 
