@@ -74,7 +74,7 @@ function storeUser(req, res){
         });
     });
 }
-
+//pendiente  controlador de borrar
 //function delete()
 
 function logout(req, res) {
