@@ -1,5 +1,6 @@
 const mysql = require('mysql2');
-const Client = require('../models/client');
+const registered = require('../models/registered');
+
 
 const database = mysql.createConnection({
     host: 'localhost',
@@ -9,32 +10,15 @@ const database = mysql.createConnection({
 })
 database.connect();
 
-/*
-class clientData {
-    static addClient(id, name, email, password) {
-        const query =
-        "INSERT INTO Clients (id,name,email,password) VALUES (? , ?, ?, ?)";
-        database.query(query,[id,name,email,password], (err, result)=> {
-            if (!err) {
-                console.error("Error register Client" + err.message);
-                return false;
-            }else{
-                console.log("Client registered succesfully");
-                return true;
-            };
-        })
-    }
-}
 
-*/
 
-class clientData {
+class userData {
     static addClient(id, name, email, password) {
         const query = "INSERT INTO Clients (id, name, email, password) VALUES (?, ?, ?, ?)";
         return new Promise((resolve, reject) => {
             database.query(query, [id, name, email, password], (err, result) => {
                 if (err) {
-                    console.error("Error registering Client: " + err.message);
+                    console.error("Error registered " + err.message);
                     reject(err);
                 } else {
                     console.log("Client registered successfully");
@@ -45,4 +29,9 @@ class clientData {
     }
 }
 
-module.exports = clientData
+
+
+
+module.exports = {
+    userData
+}

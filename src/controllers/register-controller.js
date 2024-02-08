@@ -1,9 +1,10 @@
 const bcrypt = require('bcryptjs');
-const clienData = require('../data/clientData');
+const {userData} = require('../data/datas');
+
 
 let register = (req, res) => {
     const {id,name,email,password} = req.body
-    let valid = clienData.addClient(id,name,email,password);
+    let valid = userData.addClient(id,name,email,password);
     if(!valid){
         return res.status(201).send(
             {status: 'Register Completed'}
@@ -16,4 +17,4 @@ let register = (req, res) => {
 }   
 
 
-module.exports = {register}
+module.exports = {register};

@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 
 const validator = require('../middleware/register-validator')
 const router = express.Router();
@@ -9,3 +9,5 @@ router.get('/TyC',(res, req)=>{
 
 
 module.exports = router;
+
+*/

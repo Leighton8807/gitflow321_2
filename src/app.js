@@ -7,9 +7,11 @@ const myconnection = require('express-myconnection');
 
 
 const register = require('./routes/register');
+
 const login = require('./routes/login');
 const deleteCompany = require('./routes/delete')
-const tyc = require('./routes/TyC')
+const tyc = require('./routes/TyC');
+const { registerUser, registerclient } = require('./controllers/register-controller');
 
 const app = express()
     .use(bodyParser.json())
@@ -26,7 +28,7 @@ const app = express()
     
     
 
-let port = 4000;
+let port = 3000;
 
 app.set('views', __dirname + '/views');
 app.engine('.hbs', engine({
@@ -37,9 +39,9 @@ app.set('view engine', 'hbs');
 
 
 app.use('/register', register);
-app.use('/', login)
+//app.use('/', login)
 app.use('/delete/:id', deleteCompany);
-app.use('/TyC', tyc)
+//app.use('/TyC', tyc)
 
 
 
