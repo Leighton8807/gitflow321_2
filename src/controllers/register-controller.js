@@ -7,11 +7,11 @@ let register = (req, res) => {
     let valid = userData.addClient(id,name_user,name,email,password);
     if(!valid){
         return res.status(201).send(
-            {status: 'Register Completed'}
+            {status: 'Not register'}
         ); 
     }else{
         return res.status(404).send(
-            {status: 'Bad register'}
+            {status: 'Registro completado'}
         )
     }
 }   

@@ -1,22 +1,12 @@
-/*const njwt = require('njwt');
+const nJwt = require('njwt');
 
-// Crea una clave secreta para firmar el token
-const secretKey = 'KevynGgGruapp';
 
-// Define los datos que quieres incluir en el token
-const data = {
-  userId: 123,
-  username: 'admin',
-  isAdmin: true,
-  // Otros datos del usuario...
-};
+let generateToken = (properties, key, expiration, delay=0) => {
+    let jwt = nJwt.create(properties, key);
+    jwt.setExpiration(expiration);
+    jwt.setNotBefore(delay);
+    return jwt.compact();
+}
 
-// Crea el JWT con los datos y la clave secreta
-const jwt = njwt.create(data, secretKey);
 
-// Firma el JWT
-const token = jwt.compact();
-
-console.log(token);
-
-*/
+module.exports = generateToken;

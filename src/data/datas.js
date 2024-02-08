@@ -21,7 +21,7 @@ class userData {
                     console.error("Error registered " + err.message);
                     reject(err);
                 } else {
-                    console.log("Client registered successfully");
+                    console.log(" registered successfully");
                     resolve(true);
                 }
             });
