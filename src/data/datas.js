@@ -13,10 +13,10 @@ database.connect();
 
 
 class userData {
-    static addClient(id, name, email, password) {
-        const query = "INSERT INTO Clients (id, name, email, password) VALUES (?, ?, ?, ?)";
+    static addClient(id, name_user, name, email, password) {
+        const query = "INSERT INTO Clients (id, name_user, name, email, password) VALUES (?, ?, ?, ?, ?)";
         return new Promise((resolve, reject) => {
-            database.query(query, [id, name, email, password], (err, result) => {
+            database.query(query, [id, name_user, name, email, password], (err, result) => {
                 if (err) {
                     console.error("Error registered " + err.message);
                     reject(err);
