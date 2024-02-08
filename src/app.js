@@ -6,10 +6,10 @@ const session = require('express-session');
 const myconnection = require('express-myconnection');
 
 
-const register = require('./routes/register');
+//const register = require('./routes/register');
 const login = require('./routes/login');
-const deleteCompany = require('./routes/delete')
-const tyc = require('./routes/TyC')
+
+
 
 const app = express()
     .use(bodyParser.json())
@@ -18,16 +18,25 @@ const app = express()
         extended: true
     }));
 
-    app.use(session({
-        secret: 'secret',
-        resave: true,
-        saveUninitialized: true
-    }))
+// app.use(myconnection(mysql, {
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   port: '3307',
+//   database: 'nodelogin'
+// }));
+
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}))
     
     
 
 let port = 4000;
 
+//motor de vistas 
 app.set('views', __dirname + '/views');
 app.engine('.hbs', engine({
     extname:'.hbs',
@@ -36,10 +45,10 @@ app.engine('.hbs', engine({
 app.set('view engine', 'hbs');
 
 
-app.use('/register', register);
+//app.use('/register', register);
 app.use('/', login)
-app.use('/delete/:id', deleteCompany);
-app.use('/TyC', tyc)
+
+
 
 
 
