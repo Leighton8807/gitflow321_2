@@ -1,4 +1,6 @@
 const mysql = require('mysql2');
+const fs = require('fs');
+const path = require('path');
 const registered = require('../models/registered');
 
 
@@ -14,7 +16,7 @@ database.connect();
 
 class userData {
     static addClient(id, name_user, name, email, password) {
-        const query = "INSERT INTO Clients (id, name_user, name, email, password) VALUES (?, ?, ?, ?, ?)";
+        const query = "INSERT INTO Users (id, name_user, name, email, password) VALUES (?, ?, ?, ?, ?)";
         return new Promise((resolve, reject) => {
             database.query(query, [id, name_user, name, email, password], (err, result) => {
                 if (err) {
@@ -30,8 +32,20 @@ class userData {
 }
 
 
+const addImage = (req, res) => {
+    const { nombre, description ,image } = req.body;
+  
+    // Insertar en la base de datos
+    const sql = 'INSERT INTO Images (tittle, description , image) VALUES (?, ?, ?)';
+    connection.query(sql, [nombre, description ,image], (error, results) => {
+      if (error) throw error;
+      res.json({ mensaje: 'Correcto al subir datos' });
+    });
+  };
+
 
 
 module.exports = {
-    userData
+    userData,
+    addImage
 }

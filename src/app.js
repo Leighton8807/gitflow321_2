@@ -5,6 +5,7 @@ const signingKey = require('./config/keys');
 const validateToken = require('./routes/GetAuthentication');
 const auth = require('../src/routes/getJwt');
 const register = require('./routes/register');
+const images = require('./routes/images')
 
 
 
@@ -14,12 +15,13 @@ const app = express()
 
     
 
-let port = 3000;
+let port = 4000;
 
 
 app.use('/register', register);
 app.use('/auth', auth);
 app.use('/readToken', validateToken);
+app.use('/addImg', images);
 
 
 
